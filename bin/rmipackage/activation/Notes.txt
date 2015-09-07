@@ -1,0 +1,17 @@
+Way to start rmid:
+rmiregistry.exe -> Run this command on the class path of your project.
+rmid.exe -J-Djava.security.policy=d:\workspaces\workspace_old\LearnJava\src\rmipackage\activation\policy -log d:\logs
+
+Activation Tutorial:
+Java 4: http://download.oracle.com/javase/1.4.2/docs/guide/rmi/activation.html
+Java 6: http://download.oracle.com/javase/6/docs/technotes/guides/rmi/index.html
+Oracle RMI specifications: http://download.oracle.com/javase/6/docs/platform/rmi/spec/rmiTOC.html
+Java RMI Activation: http://www.javaworld.com/javaworld/jw-09-2000/jw-0915-jinirmi.html?page=7
+
+One way to start remote debugging in rmid command is:
+
+rmid.exe -J-Djava.security.policy=d:\workspaces\workspace_old\LearnJava\src\rmipackage\activation\policy -C-Xrunjdwp:transport=dt_socket,address=8012,server=y,suspend=n
+
+In the above command, the argument, which is passed with -C option is used with all the child processes(activation group) i.e. with every separate jvm of each activation groups.
+But the limitation with this is that when there are two activation groups present then the second activation group jvm will try to open the debug port on the same mentioned
+port address, which is not possible. So second jvm(activation group) will not be launched.

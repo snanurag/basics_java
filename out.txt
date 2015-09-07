@@ -1,0 +1,5 @@
+
+D:\workspaces\workspace_old\LearnJava>echo Hello Take2.bat 
+Hello Take2.bat
+
+D:\workspaces\workspace_old\LearnJava>"C:\Program Files\Java\jdk1.7.0_02\bin\javaw" testPkg.Take2 

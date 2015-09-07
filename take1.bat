@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.7.0_02\bin\java" -classpath D:\workspaces\workspace_old\LearnJava\bin testPkg.Take1
