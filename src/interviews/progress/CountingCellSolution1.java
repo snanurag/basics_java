@@ -12,7 +12,7 @@ public class CountingCellSolution1 {
 	
 	private int maxSectorSize;
 	
-	private static final String FILE_PATH = "/home/anurag/Desktop/Email Programming test/input.txt";
+	private static final String FILE_PATH = "/home/anurag/Desktop/Email Programming IndexAt1Starts/input.txt";
 	
 	private void setCurrentSectorSize(int currentSectorSize) {
 		this.currentSectorSize = currentSectorSize;

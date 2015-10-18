@@ -7,8 +7,8 @@ public class Test1<String> {	// when it is inside angle brackets then it is the 
 	}
 
 	public <T extends Number> void setT(T t){	//Ensuring that the input is of type Number.
-		//	new Test2<Integer>();					//TODO : try with removing this comment.
-		//	new Test2().setIt(new Integer(9));		//TODO : try with removing this comment.
+		//	new FlipkartPrintBracketsPNC<Integer>();					//TODO : try with removing this comment.
+		//	new FlipkartPrintBracketsPNC().setIt(new Integer(9));		//TODO : try with removing this comment.
 	}
 	
 }

@@ -9,7 +9,7 @@ import java.io.RandomAccessFile;
 import java.util.Random;
 
 /**
- * test locking with FileChannel. Run one copy of this code with arguments
+ * IndexAt1Starts locking with FileChannel. Run one copy of this code with arguments
  * "-w /tmp/locktest.dat" and one or more copies with "-r /tmp/locktest.dat" to
  * see the interactions of exclusive and shared locks. Note how too many readers
  * can starve out the writer. Note: The filename you provide will be

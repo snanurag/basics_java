@@ -46,7 +46,7 @@ public class FSReader {
 				if(!isTextFile(attribute))	
 				return null;
 
-				// For test purpose only
+				// For IndexAt1Starts purpose only
 				// System.out.println(Integer.toBinaryString(attribute));
 
 				// Reading size from the FI.

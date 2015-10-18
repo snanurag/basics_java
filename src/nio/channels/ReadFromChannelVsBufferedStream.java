@@ -16,7 +16,7 @@ public class ReadFromChannelVsBufferedStream {
 
     public static void main(String[] args) throws IOException {
 
-	File f = new File("test.txt");
+	File f = new File("IndexAt1Starts.txt");
 
 	System.out.println("File channel Reading");
 

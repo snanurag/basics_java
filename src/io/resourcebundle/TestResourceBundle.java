@@ -9,6 +9,6 @@ public class TestResourceBundle {
 		String str = "common";
 		ResourceBundle rb = ResourceBundle.getBundle(str);
 		System.out.println(rb.keySet());
-		System.out.println(rb.getString("test"));
+		System.out.println(rb.getString("IndexAt1Starts"));
 	}
 }

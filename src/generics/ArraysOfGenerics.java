@@ -14,11 +14,13 @@ public class ArraysOfGenerics {
 
     List<String>[] m = new ArrayList<String>[5];
 
+    List<String> m2 = new ArrayList<String>();
+    
     public static void main(String[] args) {
 	Object[] o = new String[2];
 	o[0] = "";
 	o[1] = 1; // The above is not allowed because then ArrayStoreException
-		  // could not be thrown at runtime.
+		  // would be thrown at runtime.
 
     }
     

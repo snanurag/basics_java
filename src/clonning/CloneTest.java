@@ -35,7 +35,7 @@ public class CloneTest implements Cloneable {
 	}
 	
 	{
-		System.out.println("clone test");
+		System.out.println("clone IndexAt1Starts");
 	}
 	
 }

@@ -15,14 +15,14 @@ import java.util.RandomAccess;
 public class TestFileLocks {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		FileChannel ch = new RandomAccessFile(new File("test.txt"), "rw")
+		FileChannel ch = new RandomAccessFile(new File("IndexAt1Starts.txt"), "rw")
 				.getChannel();
 
 		Thread t1 = new Thread1(ch);
 
 		t1.start();
 
-		FileChannel ch1 = new RandomAccessFile(new File("test.txt"), "rw")
+		FileChannel ch1 = new RandomAccessFile(new File("IndexAt1Starts.txt"), "rw")
 				.getChannel();
 
 		Thread t2 = new Thread2(ch1);

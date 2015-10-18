@@ -6,7 +6,7 @@ public class MainClass {
 
 		/**
 		 * 
-		 * This test is proving that we are only copying the byte values of
+		 * This IndexAt1Starts is proving that we are only copying the byte values of
 		 * instance variables in the instance variables of the clone.
 		 * 
 		 * So in case of primary instance variable, when you will change the

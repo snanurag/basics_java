@@ -18,6 +18,6 @@ public class Test2 implements Serializable{
 	}
 	
 	{
-		System.out.println("anutag in test 2 initialization block.");
+		System.out.println("anutag in IndexAt1Starts 2 initialization block.");
 	}
 }

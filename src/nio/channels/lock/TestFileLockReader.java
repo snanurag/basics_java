@@ -9,7 +9,7 @@ public class TestFileLockReader {
 
 	
 	public static void main(String[] args) throws Exception {
-		FileChannel ch = new RandomAccessFile(new File("test.txt"), "r").getChannel();
+		FileChannel ch = new RandomAccessFile(new File("IndexAt1Starts.txt"), "r").getChannel();
 		System.out.println("before lock TestFileLockReader");
 		FileLock lock = ch.lock(0, Long.MAX_VALUE, true);
 		System.out.println("after lock TestFileLockReader");
