@@ -1,19 +1,9 @@
 
-public class Take3 extends Thread{
+public class Take3{
 
-    protected void createReq()
-    {
-	System.out.println("take3 createReq");
-    }
-    
-    private void processReq()
-    {
-	createReq();
-    }
-    
-    public void run()
-    {
-	processReq();
-    }
-    
+	public static void main(String[] args)
+	{
+		
+	}
+  
 }
