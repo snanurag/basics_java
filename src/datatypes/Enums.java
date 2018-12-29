@@ -12,6 +12,6 @@ public class Enums {
 	
 
 	public static void main(String[] args) {
-		Enums.DIGIT.UNIT;
+//		Enums.DIGIT.UNIT;
 	}
 }

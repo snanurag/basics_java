@@ -1,3 +1,5 @@
+package A;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +10,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 
-public class Main {
+public class B {
     static final int MAX = 16;
 
     static class Fact {

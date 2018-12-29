@@ -11,5 +11,7 @@ public class BitwiseOperators {
 		//	byte n = -8 & 0xfff;	//Error: Because going out of byte range.
 		
 		System.out.println(Integer.toBinaryString(-1));
+		System.out.println(-8 << 0x1c);
+		System.out.println(-8 << 0x1d);
 	}
 }
