@@ -51,7 +51,7 @@ public class TestReentrantReadWriteLock {
 		public void run() {
 			rLock.lock();
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,10 +69,10 @@ public class TestReentrantReadWriteLock {
 				 * TODO try to run it with commenting the sleep and not
 				 * commenting it. This way race condition can be observed with
 				 * Reader1 Thread.
-				 * 
+				 *
 				 * Closed the window for entering Writer Thread.
 				 */
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -91,7 +91,7 @@ public class TestReentrantReadWriteLock {
 			 * lock after Writer has acquired write lock.
 			 */
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
