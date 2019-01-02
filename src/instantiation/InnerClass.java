@@ -16,7 +16,7 @@ public class InnerClass
 		void test()
 		{
 			//Can't refer instance variable in static class
-			System.out.println(t);
+//			System.out.println(t);
 		}
 	}
 	

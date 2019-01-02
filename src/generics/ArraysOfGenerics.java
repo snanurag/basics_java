@@ -9,10 +9,10 @@ import java.util.List;
 
 public class ArraysOfGenerics {
 
-    List<?>[] l = new ArrayList<Object>[2]; // Can not create arrays of
+//    List<?>[] l = new ArrayList<Object>[2]; // Can not create arrays of
 					    // non-reifiable types
 
-    List<String>[] m = new ArrayList<String>[5];
+//    List<String>[] m = new ArrayList<String>[5];
 
     List<String> m2 = new ArrayList<String>();
     
@@ -25,5 +25,5 @@ public class ArraysOfGenerics {
     }
     
     
-    class MathException<T> extends Exception { /* ... */ }    // compile-time error
+//    class MathException<T> extends Exception { /* ... */ }    // compile-time error
 }

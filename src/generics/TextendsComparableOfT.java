@@ -23,7 +23,7 @@ public class TextendsComparableOfT implements Comparable<String>{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(String o) {
         // TODO Auto-generated method stub
         return 0;
     }

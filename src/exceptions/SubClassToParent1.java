@@ -6,13 +6,13 @@ public class SubClassToParent1 extends ParentClass1{
 	//	throw new IllegalAccessException();		//	TODO try with removing these comments.
 	}
 
-	public static void removeDuplicates(char[] str) throws IllegalAccessException{
-		
-	}
+//	public static void removeDuplicates(char[] str) throws IllegalAccessException{
+//
+//	}
 	
-	public void setIt2() throws IllegalAccessException {
+//	public void setIt2() throws IllegalAccessException {
 		
-	}
+//	}
 	
 	public void getIt(){
 		throw new NullPointerException();

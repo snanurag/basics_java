@@ -8,7 +8,7 @@ public class CheckNullPassing {
 
 	// Method would not be ambiguous in case of Object and just one simple
 	// other argument.
-	c.method(null);
+//	c.method(null)
     }
 
     private void method(Integer i) {

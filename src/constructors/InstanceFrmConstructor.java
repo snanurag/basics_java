@@ -99,7 +99,7 @@ public class InstanceFrmConstructor {
 	}
 
 	public static void main(String[] args) {
-		InstanceFrmConstructor.SynchronizedCollection(new ArrayList());
+//		InstanceFrmConstructor.SynchronizedCollection(new ArrayList());
 		
 	}
 }
