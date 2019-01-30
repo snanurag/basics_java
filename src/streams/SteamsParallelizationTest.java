@@ -19,6 +19,7 @@ public class SteamsParallelizationTest {
 //        l.parallelStream().forEach(System.out::println); //Printing parallelly.
 //        l.stream().parallel().forEach(System.out::println); //Printing parallely
         System.out.println("all writing done.");
+
     }
 
 

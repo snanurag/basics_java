@@ -16,7 +16,7 @@ public class ReadFromChannelVsBufferedStream {
 
     public static void main(String[] args) throws IOException {
 
-	File f = new File("IndexAt1Starts.txt");
+	File f = new File("/Users/anuragshrinagar/Documents/workspace/Quora-Insincere-word-challenge/input/embeddings/glove.840B.300d/glove.840B.300d.txt");
 
 	System.out.println("File channel Reading");
 
@@ -24,7 +24,7 @@ public class ReadFromChannelVsBufferedStream {
 
 	FileChannel fc = fi.getChannel();
 
-	ByteBuffer bbf = ByteBuffer.allocate(100);
+	ByteBuffer bbf = ByteBuffer.allocate(100000);
 
 	long time = System.currentTimeMillis();
 	while (fc.read(bbf) != -1) {
@@ -39,7 +39,7 @@ public class ReadFromChannelVsBufferedStream {
 
 	FileInputStream fi1 = new FileInputStream(f);
 
-	byte[] b = new byte[100];
+	byte[] b = new byte[100000];
 
 	time = System.currentTimeMillis();
 	while (fi1.available() != 0) {

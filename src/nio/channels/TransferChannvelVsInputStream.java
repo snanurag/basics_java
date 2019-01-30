@@ -17,7 +17,7 @@ public class TransferChannvelVsInputStream {
     }
 
     private static void useNormalIO() throws Exception {
-        File file = new File("IndexAt1Starts.txt");
+        File file = new File("/Users/anuragshrinagar/Documents/workspace/java_basic_examples/src/BufferReadervsNIOChannel.txt");
         File oFile = new File("test1.txt");
 
         long time1 = System.currentTimeMillis();
@@ -36,7 +36,7 @@ public class TransferChannvelVsInputStream {
     }
 
     private static void useFileChannel() throws Exception {
-        File file = new File("IndexAt1Starts.txt");
+        File file = new File("/Users/anuragshrinagar/Documents/workspace/java_basic_examples/src/BufferReadervsNIOChannel.txt");
         File oFile = new File("test2.txt");
 
         long time1 = System.currentTimeMillis();
