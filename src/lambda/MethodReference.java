@@ -15,5 +15,6 @@ public class MethodReference {
         ref.display();
 
         MyInterface2 ref2 = Hello::new;
+        ref2.display("say hi");
     }
 }
