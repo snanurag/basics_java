@@ -9,20 +9,31 @@ import java.util.PriorityQueue;
  * Performer should be chose from the participants present at any time in party. How can this be executed with minimum complexity.
  */
 public class TerracottaNewPerformer {
+
+    //
     static HashSet performedParticipants = new HashSet();
-    static HashSet futurePerformers = new HashSet();
     static HashSet participantsPresent = new HashSet();
+    static PriorityQueue<String> futurePerformers = new PriorityQueue<>();
 
     public static void perform(){
-
-        futurePerformers.stream().forEach(obj ->{
-            if(!futurePerformers.isEmpty()){
-                System.out.println(obj);
-                futurePerformers.remove(obj);
-            }
-        });
+        String name = futurePerformers.poll();
+        performedParticipants.add(name);
+        System.out.println(name);
     }
 
+    public static void enterInParty(String s){
+        if(!performedParticipants.contains(s)){
+            performedParticipants.add(s);
+            futurePerformers.add(s);
+        }
+        participantsPresent.add(s);
+    }
+
+    public static void leaveParty(String s){
+        if(!performedParticipants.contains(s))
+            futurePerformers.remove(s);
+        participantsPresent.remove(s);
+    }
 
     public static void main(String[] args) {
         for(int i=0; i<10; i++)
