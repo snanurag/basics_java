@@ -14,12 +14,12 @@ public class TextendsComparableOfT implements Comparable<String>{
     }
     
     public static void main(String[] args) {
-	List<TextendsComparableOfT> t = new ArrayList<TextendsComparableOfT>();
-//	max(t);
-	
-	List<SubClassComparable> u = new ArrayList<>();
-	
-	max(u);
+        List<TextendsComparableOfT> t = new ArrayList<TextendsComparableOfT>();
+    //	max(t);
+
+        List<SubClassComparable> u = new ArrayList<>();
+
+        max(u);
     }
 
     @Override

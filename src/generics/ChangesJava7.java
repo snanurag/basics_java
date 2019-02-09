@@ -18,6 +18,9 @@ public class ChangesJava7 {
     }
 
     public void method2(){
+        List<List<ChangesJava7>> l = new ArrayList<>();
+        List sub_l_1 = new ArrayList();
+        l.add(sub_l_1);
 	
     }
 }
