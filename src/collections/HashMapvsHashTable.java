@@ -11,8 +11,10 @@ public class HashMapvsHashTable {
         Map ht = new Hashtable();
         Map hm = new HashMap();
 
-        // ht.put(null,null); This gives runtime exception.
-        // ht.get(null); This gives runtime exception.
+        // ht.put(null,null); //This gives runtime exception.
+        // ht.get(null); //This gives runtime exception.
+        System.out.println(ht.get("abc")); //This works. Every not-stored key has null value.
         System.out.println(hm.get(null)); // hashmap by default has <null,null> key-value pair. So, it doesn't fail in conditional statements.
+        System.out.println(hm.get("abc"));
     }
 }
