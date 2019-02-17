@@ -1,7 +1,7 @@
 package algopractice;
 /*
-Ther is a grid of m x n which has any random number of coins in any sell. Have to start from the any column of first row and traverse downward.
-Can traverse down, left-down or right-down cell. Find the complete traversal path till the last row that returns maximum sum of coins.
+There is a grid of m x n which has any random number of coins in any sell. Have to start from the any column of first row and traverse downward.
+Can traverse to only down, left-down or right-down cell. Find the complete traversal path till the last row that returns maximum sum of coins.
  */
 import java.util.ArrayList;
 import java.util.List;
