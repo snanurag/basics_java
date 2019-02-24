@@ -23,7 +23,6 @@ public class TerracottaNewPerformer {
 
     public static void enterInParty(String s){
         if(!performedParticipants.contains(s)){
-            performedParticipants.add(s);
             futurePerformers.add(s);
         }
         participantsPresent.add(s);
