@@ -1,12 +1,11 @@
 package streams;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SteamsParallelizationTest {
-    public static void main(String[] args) throws IOException
-
-    {
+    public static void main(String[] args) throws IOException {
         File f = new File("test.txt");
         Writer w = new FileWriter(f);
         BufferedWriter bfw = new BufferedWriter(w);

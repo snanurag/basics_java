@@ -32,46 +32,44 @@ package socketprogramming;
  */
 
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class KnockKnockServer2 {
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		ServerSocket serverSocket = null;
-		try {
-			serverSocket = new ServerSocket(4765);
-		} catch (IOException e) {
-			System.err.println("Could not listen on port: 4444.");
-			System.exit(1);
-		}
+        ServerSocket serverSocket = null;
+        try {
+            serverSocket = new ServerSocket(4765);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port: 4444.");
+            System.exit(1);
+        }
 
-		Socket clientSocket = null;
-		try {
-			System.out.println("anurag before accept");
-			clientSocket = serverSocket.accept();
-			System.out.println("anurag after accept");
-		} catch (IOException e) {
-			System.err.println("Accept failed.");
-			System.exit(1);
-		}
+        Socket clientSocket = null;
+        try {
+            System.out.println("anurag before accept");
+            clientSocket = serverSocket.accept();
+            System.out.println("anurag after accept");
+        } catch (IOException e) {
+            System.err.println("Accept failed.");
+            System.exit(1);
+        }
 
-		BufferedOutputStream out = new BufferedOutputStream(clientSocket.getOutputStream());
-		
-		System.out.println("anurag after creating Buffered Reader");
-		try {
-			Thread.sleep(100000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        BufferedOutputStream out = new BufferedOutputStream(clientSocket.getOutputStream());
+
+        System.out.println("anurag after creating Buffered Reader");
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 //		out.write(0);
-		
-		out.close();
-		clientSocket.close();
-		serverSocket.close();
-	}
+
+        out.close();
+        clientSocket.close();
+        serverSocket.close();
+    }
 }

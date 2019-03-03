@@ -15,27 +15,27 @@ public class TerracottaNewPerformer {
     static HashSet participantsPresent = new HashSet();
     static PriorityQueue<String> futurePerformers = new PriorityQueue<>();
 
-    public static void perform(){
+    public static void perform() {
         String name = futurePerformers.poll();
         performedParticipants.add(name);
         System.out.println(name);
     }
 
-    public static void enterInParty(String s){
-        if(!performedParticipants.contains(s)){
+    public static void enterInParty(String s) {
+        if (!performedParticipants.contains(s)) {
             futurePerformers.add(s);
         }
         participantsPresent.add(s);
     }
 
-    public static void leaveParty(String s){
-        if(!performedParticipants.contains(s))
+    public static void leaveParty(String s) {
+        if (!performedParticipants.contains(s))
             futurePerformers.remove(s);
         participantsPresent.remove(s);
     }
 
     public static void main(String[] args) {
-        for(int i=0; i<10; i++)
+        for (int i = 0; i < 10; i++)
             futurePerformers.add(String.valueOf(i));
         perform();
     }

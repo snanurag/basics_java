@@ -1,81 +1,61 @@
-public class test
-{
-	static int n;
-	static int[] s = { 0,0,1,1};
+public class test {
+    static int n;
+    static int[] s = {0, 0, 1, 1};
 
-	static int pointer = 0;
-	static
-	{
-		n = s.length;
-		pointer = n - 1;
-	}
+    static int pointer = 0;
 
-	// static String str = "";
+    static {
+        n = s.length;
+        pointer = n - 1;
+    }
 
-	public static void main(String[] args)
-	{
-		int temp = n - 1;
-		iteration(temp);
+    // static String str = "";
 
-		while (pointer > -1)
-		{
-			if (pointer > n - 1)
-			{
-				System.out.println("no position");
-				break;
-			}
-			else if (s[pointer] == 1)
-			{
-				if (pointer == 0)
-				{
-					System.out.println(pointer);
-					break;
+    public static void main(String[] args) {
+        int temp = n - 1;
+        iteration(temp);
 
-				}
-				else if (s[pointer - 1] == 0)
-				{
-					System.out.println(pointer);
-					break;
-				}
-				else
-					pointer--;
-			}
-			else if (s[pointer] == 0)
-			{
-				if(pointer == n-1)
-				{
-					System.out.println("no position");
-					break;
-				}
-				if (s[pointer + 1] == 1)
-				{
-					System.out.println(pointer + 1);
-					break;
-				}
-				else
-					pointer++;
-			}
-		}
-	}
+        while (pointer > -1) {
+            if (pointer > n - 1) {
+                System.out.println("no position");
+                break;
+            } else if (s[pointer] == 1) {
+                if (pointer == 0) {
+                    System.out.println(pointer);
+                    break;
 
-	private static void iteration(int temp)
-	{
-		if (pointer > n - 1 || temp - temp / 2 <= 1)
-		{
-			// System.out.println(n-1);
-			return;
-		}
+                } else if (s[pointer - 1] == 0) {
+                    System.out.println(pointer);
+                    break;
+                } else
+                    pointer--;
+            } else if (s[pointer] == 0) {
+                if (pointer == n - 1) {
+                    System.out.println("no position");
+                    break;
+                }
+                if (s[pointer + 1] == 1) {
+                    System.out.println(pointer + 1);
+                    break;
+                } else
+                    pointer++;
+            }
+        }
+    }
 
-		if (s[pointer] == 1)
-		{
-			pointer = pointer - temp / 2;
-		}
-		else if (s[pointer] == 0)
-		{
-			pointer = pointer + temp / 2;
-		}
+    private static void iteration(int temp) {
+        if (pointer > n - 1 || temp - temp / 2 <= 1) {
+            // System.out.println(n-1);
+            return;
+        }
 
-		iteration(temp / 2);
-	}
+        if (s[pointer] == 1) {
+            pointer = pointer - temp / 2;
+        } else if (s[pointer] == 0) {
+            pointer = pointer + temp / 2;
+        }
+
+        iteration(temp / 2);
+    }
 
 }

@@ -2,9 +2,6 @@ package lambda;
 
 
 public class MethodReference {
-    public void myMethod(){
-        System.out.println("Instance Method");
-    }
     public static void main(String[] args) {
         MethodReference obj = new MethodReference();
         MyInterface ref0 = () -> obj.myMethod();
@@ -16,5 +13,9 @@ public class MethodReference {
 
         MyInterface2 ref2 = Hello::new;
         ref2.display("say hi");
+    }
+
+    public void myMethod() {
+        System.out.println("Instance Method");
     }
 }

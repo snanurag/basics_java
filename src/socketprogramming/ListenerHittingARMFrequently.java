@@ -39,33 +39,33 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ListenerHittingARMFrequently {
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		Socket kkSocket = null;
-		PrintWriter out = null;
-		BufferedReader stdIn = new BufferedReader(new InputStreamReader(
-				System.in));
+        Socket kkSocket = null;
+        PrintWriter out = null;
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(
+                System.in));
 
-		while (true) {
-			try {
-				System.out.println("Listener before making connection");
-				kkSocket = new Socket("localhost", 4765);
-				System.out.println("Listener after making connection");
-				out = new PrintWriter(kkSocket.getOutputStream(), true);
-			} catch (UnknownHostException e) {
-				System.err.println("Don't know about host: taranis.");
-			} catch (IOException e) {
-				System.err
-						.println("Couldn't get I/O for the connection to: taranis.");
-			}
+        while (true) {
+            try {
+                System.out.println("Listener before making connection");
+                kkSocket = new Socket("localhost", 4765);
+                System.out.println("Listener after making connection");
+                out = new PrintWriter(kkSocket.getOutputStream(), true);
+            } catch (UnknownHostException e) {
+                System.err.println("Don't know about host: taranis.");
+            } catch (IOException e) {
+                System.err
+                        .println("Couldn't get I/O for the connection to: taranis.");
+            }
 
-			String fromUser = "";
+            String fromUser = "";
 
-			fromUser = "input";
-			out.println(fromUser);
+            fromUser = "input";
+            out.println(fromUser);
 
-			out.close();
-			kkSocket.close();
-		}
-	}
+            out.close();
+            kkSocket.close();
+        }
+    }
 }

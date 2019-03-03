@@ -19,72 +19,72 @@ public class ThreeisCrowd {
 
     public static void main(String[] args) throws IOException {
 
-	inputStream = new FileInputStream(new File("in2.txt"));
-	
-	String line = readLine();
+        inputStream = new FileInputStream(new File("in2.txt"));
 
-	Integer totalCases = Integer.parseInt(line);
+        String line = readLine();
 
-	for (int i = 0; i < totalCases; i++) {
+        Integer totalCases = Integer.parseInt(line);
 
-	    line = readLine();
+        for (int i = 0; i < totalCases; i++) {
 
-	    Integer testCase = Integer.parseInt(line);
+            line = readLine();
 
-	    long l = recursiveFunc(testCase);
-	    l = (long)Math.pow(2, testCase) - l;
-	    System.out.println(l);
-	
-	}
+            Integer testCase = Integer.parseInt(line);
+
+            long l = recursiveFunc(testCase);
+            l = (long) Math.pow(2, testCase) - l;
+            System.out.println(l);
+
+        }
     }
-    
+
     private static long recursiveFunc(int n) {
 
-	if (resultStore[n] == 0 && n > 2) {
-	    resultStore[n] = recursiveFunc(n - 1) + recursiveFunc(n - 2)
-		    + recursiveFunc(n - 3);
-	    return resultStore[n];
-	} else {
-	    if (n > 2) {
-		return resultStore[n];
-	    } else if (n == 2) {
-		return 4;
-	    } else if (n == 1) {
-		return 2;
-	    } else {
-		return 1;
-	    }
-	}
+        if (resultStore[n] == 0 && n > 2) {
+            resultStore[n] = recursiveFunc(n - 1) + recursiveFunc(n - 2)
+                    + recursiveFunc(n - 3);
+            return resultStore[n];
+        } else {
+            if (n > 2) {
+                return resultStore[n];
+            } else if (n == 2) {
+                return 4;
+            } else if (n == 1) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
     }
 
     private static String readLine() throws IOException {
 
-	String str = null;
+        String str = null;
 
-	if (counter == 8192 || counter == 0) {
-	    b = new byte[8192];
-	    inputStream.read(b);
-	}
+        if (counter == 8192 || counter == 0) {
+            b = new byte[8192];
+            inputStream.read(b);
+        }
 
-	while (true) {
+        while (true) {
 
-	    if (counter != 8192) {
-		char c = (char) b[counter];
-		counter++;
-		if (c != '\n' && c != 0) {
-		    buff.append(c);
-		} else {
+            if (counter != 8192) {
+                char c = (char) b[counter];
+                counter++;
+                if (c != '\n' && c != 0) {
+                    buff.append(c);
+                } else {
 
-		    str = buff.toString();
-		    buff = new StringBuffer();
-		    return str.trim();
-		}
-	    } else {
-		b = new byte[8192];
-		inputStream.read(b);
-		counter = 0;
-	    }
-	}
+                    str = buff.toString();
+                    buff = new StringBuffer();
+                    return str.trim();
+                }
+            } else {
+                b = new byte[8192];
+                inputStream.read(b);
+                counter = 0;
+            }
+        }
     }
 
 }

@@ -4,10 +4,10 @@ public class CheckNullPassing {
 
     public static void main(String[] args) {
 
-	CheckNullPassing c = new CheckNullPassing();
+        CheckNullPassing c = new CheckNullPassing();
 
-	// Method would not be ambiguous in case of Object and just one simple
-	// other argument.
+        // Method would not be ambiguous in case of Object and just one simple
+        // other argument.
 //	c.method(null)
     }
 

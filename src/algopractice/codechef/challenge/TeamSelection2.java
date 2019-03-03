@@ -27,113 +27,113 @@ public class TeamSelection2 {
 
     public static void main(String[] args) throws IOException {
 
-	inputStream = new FileInputStream(new File("in.txt"));
+        inputStream = new FileInputStream(new File("in.txt"));
 
-	int totalCases = Integer.parseInt(readLine());
+        int totalCases = Integer.parseInt(readLine());
 
-	for (int i = 0; i < totalCases; i++) {
-	    readLine();
+        for (int i = 0; i < totalCases; i++) {
+            readLine();
 
-	    int totalPlayers = Integer.parseInt(readLine());
+            int totalPlayers = Integer.parseInt(readLine());
 
-	    players = new int[totalPlayers];
+            players = new int[totalPlayers];
 
-	    for (int j = 0; j < totalPlayers; j++) {
+            for (int j = 0; j < totalPlayers; j++) {
 
-		players[j] = Integer.parseInt(readLine());
+                players[j] = Integer.parseInt(readLine());
 
-	    }
+            }
 
-	    markerArray = new boolean[players.length];
-	    lastStoredCopy = null;
-	    lastStoredSum = 0;
+            markerArray = new boolean[players.length];
+            lastStoredCopy = null;
+            lastStoredSum = 0;
 
-	    int grandTotal = getTotalOfCollection(players);
+            int grandTotal = getTotalOfCollection(players);
 
-	    halfSum = grandTotal/ 2;
-	   
-	    recursiveFunction();
-	    
-	    int total = getSum(lastStoredCopy);
-	    
-	    System.out.print(total);
-	    System.out.print(" ");
-	    System.out.print(grandTotal - total);
-	    if(i != totalCases - 1)
-		System.out.println('\n');
+            halfSum = grandTotal / 2;
 
-	}
+            recursiveFunction();
+
+            int total = getSum(lastStoredCopy);
+
+            System.out.print(total);
+            System.out.print(" ");
+            System.out.print(grandTotal - total);
+            if (i != totalCases - 1)
+                System.out.println('\n');
+
+        }
     }
 
     private static String readLine() throws IOException {
 
-	String str = null;
+        String str = null;
 
-	if (counter == 8192 || counter == 0) {
-	    b = new byte[8192];
-	    inputStream.read(b);
-	}
+        if (counter == 8192 || counter == 0) {
+            b = new byte[8192];
+            inputStream.read(b);
+        }
 
-	while (true) {
+        while (true) {
 
-	    if (counter != 8192) {
-		char c = (char) b[counter];
-		counter++;
-		if (c != '\n' && c != 0) {
-		    buff.append(c);
-		} else {
+            if (counter != 8192) {
+                char c = (char) b[counter];
+                counter++;
+                if (c != '\n' && c != 0) {
+                    buff.append(c);
+                } else {
 
-		    str = buff.toString();
-		    buff = new StringBuffer();
-		    return str.trim();
-		}
-	    } else {
-		b = new byte[8192];
-		inputStream.read(b);
-		counter = 0;
-	    }
-	}
+                    str = buff.toString();
+                    buff = new StringBuffer();
+                    return str.trim();
+                }
+            } else {
+                b = new byte[8192];
+                inputStream.read(b);
+                counter = 0;
+            }
+        }
     }
 
     private static int getTotalOfCollection(int[] players) {
-	int total = 0;
-	for (int i = 0; i < players.length; i++) {
-	    total += players[i];
-	}
+        int total = 0;
+        for (int i = 0; i < players.length; i++) {
+            total += players[i];
+        }
 
-	return total;
+        return total;
     }
 
     private static void recursiveFunction() {
-	for (int i = 0; i < markerArray.length; i++) {
-	    if (!markerArray[i]) {
-		markerArray[i] = true;
-		int tmpSum = getSum(markerArray);
-		if (tmpSum > halfSum) {
-		    tmpSum -= players[i];
-		    markerArray[i] = false;
-		} else if (tmpSum < halfSum) {
-		    recursiveFunction();
-		}
-		if (tmpSum <= halfSum && tmpSum > lastStoredSum) {
-		    lastStoredSum = tmpSum;
-		    lastStoredCopy = markerArray.clone();
-		}
+        for (int i = 0; i < markerArray.length; i++) {
+            if (!markerArray[i]) {
+                markerArray[i] = true;
+                int tmpSum = getSum(markerArray);
+                if (tmpSum > halfSum) {
+                    tmpSum -= players[i];
+                    markerArray[i] = false;
+                } else if (tmpSum < halfSum) {
+                    recursiveFunction();
+                }
+                if (tmpSum <= halfSum && tmpSum > lastStoredSum) {
+                    lastStoredSum = tmpSum;
+                    lastStoredCopy = markerArray.clone();
+                }
 
-		markerArray[i] = false;
-	    }
-	}
+                markerArray[i] = false;
+            }
+        }
     }
 
     private static int getSum(boolean[] markerArray) {
-	int sum = 0;
-	for (int i = 0; i < markerArray.length; i++) {
-	    if (markerArray[i]) {
-		sum += players[i];
-	    }
-	}
+        int sum = 0;
+        for (int i = 0; i < markerArray.length; i++) {
+            if (markerArray[i]) {
+                sum += players[i];
+            }
+        }
 
-	return sum;
+        return sum;
     }
 
 }

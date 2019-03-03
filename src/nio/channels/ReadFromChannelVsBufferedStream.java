@@ -16,38 +16,38 @@ public class ReadFromChannelVsBufferedStream {
 
     public static void main(String[] args) throws IOException {
 
-	File f = new File("/Users/anuragshrinagar/Documents/workspace/Quora-Insincere-word-challenge/input/embeddings/glove.840B.300d/glove.840B.300d.txt");
+        File f = new File("/Users/anuragshrinagar/Documents/workspace/Quora-Insincere-word-challenge/input/embeddings/glove.840B.300d/glove.840B.300d.txt");
 
-	System.out.println("File channel Reading");
+        System.out.println("File channel Reading");
 
-	FileInputStream fi = new FileInputStream(f);
+        FileInputStream fi = new FileInputStream(f);
 
-	FileChannel fc = fi.getChannel();
+        FileChannel fc = fi.getChannel();
 
-	ByteBuffer bbf = ByteBuffer.allocate(100000);
+        ByteBuffer bbf = ByteBuffer.allocate(100000);
 
-	long time = System.currentTimeMillis();
-	while (fc.read(bbf) != -1) {
-	    bbf.clear();
-	}
-	System.out.println(time - System.currentTimeMillis());
+        long time = System.currentTimeMillis();
+        while (fc.read(bbf) != -1) {
+            bbf.clear();
+        }
+        System.out.println(time - System.currentTimeMillis());
 
-	fc.close();
-	fi.close();
+        fc.close();
+        fi.close();
 
-	System.out.println("InputStream Reading");
+        System.out.println("InputStream Reading");
 
-	FileInputStream fi1 = new FileInputStream(f);
+        FileInputStream fi1 = new FileInputStream(f);
 
-	byte[] b = new byte[100000];
+        byte[] b = new byte[100000];
 
-	time = System.currentTimeMillis();
-	while (fi1.available() != 0) {
-	    fi1.read(b);
-	}
-	System.out.println(time - System.currentTimeMillis());
+        time = System.currentTimeMillis();
+        while (fi1.available() != 0) {
+            fi1.read(b);
+        }
+        System.out.println(time - System.currentTimeMillis());
 
-	fi1.close();
+        fi1.close();
 
     }
 

@@ -39,43 +39,43 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class KnockKnockServer {
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		ServerSocket serverSocket = null;
-		try {
-			serverSocket = new ServerSocket(4765);
-		} catch (IOException e) {
-			System.err.println("Could not listen on port: 4444.");
-			System.exit(1);
-		}
+        ServerSocket serverSocket = null;
+        try {
+            serverSocket = new ServerSocket(4765);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port: 4444.");
+            System.exit(1);
+        }
 
-		Socket clientSocket = null;
-		try {
-			System.out.println("anurag before accept");
-			clientSocket = serverSocket.accept();
-			System.out.println("anurag after accept");
-		} catch (IOException e) {
-			System.err.println("Accept failed.");
-			System.exit(1);
-		}
+        Socket clientSocket = null;
+        try {
+            System.out.println("anurag before accept");
+            clientSocket = serverSocket.accept();
+            System.out.println("anurag after accept");
+        } catch (IOException e) {
+            System.err.println("Accept failed.");
+            System.exit(1);
+        }
 
-		PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-		BufferedReader in = new BufferedReader(new InputStreamReader(
-				clientSocket.getInputStream()));
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                clientSocket.getInputStream()));
 
-		System.out.println("anurag after creating Buffered Reader");
-		String inputLine, outputLine;
+        System.out.println("anurag after creating Buffered Reader");
+        String inputLine, outputLine;
 
-		while ((inputLine = in.readLine()) != null) { 
-			outputLine = inputLine;
-			System.out.println("Server got input from client: " + inputLine);
-			out.println(outputLine);
-			if (outputLine.equals("Bye."))
-				break;
-		}
-		out.close();
-		in.close();
-		clientSocket.close();
-		serverSocket.close();
-	}
+        while ((inputLine = in.readLine()) != null) {
+            outputLine = inputLine;
+            System.out.println("Server got input from client: " + inputLine);
+            out.println(outputLine);
+            if (outputLine.equals("Bye."))
+                break;
+        }
+        out.close();
+        in.close();
+        clientSocket.close();
+        serverSocket.close();
+    }
 }

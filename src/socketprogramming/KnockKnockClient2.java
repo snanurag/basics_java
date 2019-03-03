@@ -35,37 +35,36 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class KnockKnockClient2 {
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		Socket kkSocket = null;
-		BufferedOutputStream out = null;
-		BufferedReader in = null;
+        Socket kkSocket = null;
+        BufferedOutputStream out = null;
+        BufferedReader in = null;
 
-		try {
-			kkSocket = new Socket("localhost", 4765);
-			out = new BufferedOutputStream(kkSocket.getOutputStream());
-			in = new BufferedReader(new InputStreamReader(kkSocket
-					.getInputStream()));
-		} catch (UnknownHostException e) {
-			System.err.println("Don't know about host: taranis.");
-			System.exit(1);
-		} catch (IOException e) {
-			System.err
-					.println("Couldn't get I/O for the connection to: taranis.");
-			System.exit(1);
-		}
+        try {
+            kkSocket = new Socket("localhost", 4765);
+            out = new BufferedOutputStream(kkSocket.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(kkSocket
+                    .getInputStream()));
+        } catch (UnknownHostException e) {
+            System.err.println("Don't know about host: taranis.");
+            System.exit(1);
+        } catch (IOException e) {
+            System.err
+                    .println("Couldn't get I/O for the connection to: taranis.");
+            System.exit(1);
+        }
 
-		System.out.println("anurag before System in");
+        System.out.println("anurag before System in");
 
-		System.out.println(in.read());
+        System.out.println(in.read());
 
-		out.close();
-		in.close();
-		kkSocket.close();
-	}
+        out.close();
+        in.close();
+        kkSocket.close();
+    }
 }

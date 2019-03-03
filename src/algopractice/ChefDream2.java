@@ -17,73 +17,73 @@ public class ChefDream2 {
 
     public static void main(String[] args) throws IOException {
 
-	inputStream = new FileInputStream(new File("in.txt"));
-	
-	long time = System.currentTimeMillis();
+        inputStream = new FileInputStream(new File("in.txt"));
 
-	int totalAssistants = 0;
-	boolean haveBeenInside = false;
+        long time = System.currentTimeMillis();
 
-	int n = 0;
-	int k = 0;
+        int totalAssistants = 0;
+        boolean haveBeenInside = false;
 
-	String tempString = readLine();
-	String[] dishArray = tempString.split(" ");
+        int n = 0;
+        int k = 0;
 
-	n = Integer.valueOf(dishArray[0]);
-	k = Integer.valueOf(dishArray[1].trim());
+        String tempString = readLine();
+        String[] dishArray = tempString.split(" ");
 
-	tempString = readLine();
-	dishArray = tempString.split(" ");
+        n = Integer.valueOf(dishArray[0]);
+        k = Integer.valueOf(dishArray[1].trim());
 
-	int[] cookedArray = new int[n];
+        tempString = readLine();
+        dishArray = tempString.split(" ");
 
-	for (int i = 0; i < n; i++) {
-	    for (int j = i; j < i + k; j++) {
-		if (j < n && dishArray[i].trim().equals(dishArray[j].trim())
-			&& cookedArray[j] == 0) {
+        int[] cookedArray = new int[n];
 
-		    cookedArray[j] = 1;
-		    haveBeenInside = true;
-		}
-	    }
-	    if (haveBeenInside) {
-		totalAssistants++;
-		haveBeenInside = false;
-	    }
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < i + k; j++) {
+                if (j < n && dishArray[i].trim().equals(dishArray[j].trim())
+                        && cookedArray[j] == 0) {
 
-	}
-	System.out.println(System.currentTimeMillis() - time);
-	System.out.println(totalAssistants);
+                    cookedArray[j] = 1;
+                    haveBeenInside = true;
+                }
+            }
+            if (haveBeenInside) {
+                totalAssistants++;
+                haveBeenInside = false;
+            }
+
+        }
+        System.out.println(System.currentTimeMillis() - time);
+        System.out.println(totalAssistants);
 
     }
 
     private static String readLine() throws IOException {
 
-	String str = null;
+        String str = null;
 
 
-	if (counter == 8192 || counter == 0) {
-	    inputStream.read(b);
-	}
+        if (counter == 8192 || counter == 0) {
+            inputStream.read(b);
+        }
 
-	while (true) {
+        while (true) {
 
-	    if (counter != 8192) {
-		char c = (char) b[counter];
-		counter++;
-		if (c != '\n') {
-		    buff.append(c);
-		} else {
+            if (counter != 8192) {
+                char c = (char) b[counter];
+                counter++;
+                if (c != '\n') {
+                    buff.append(c);
+                } else {
 
-		    str = buff.toString();
-		    buff = new StringBuffer();
-		    return str;
-		}
-	    } else {
-		inputStream.read(b);
-		counter = 0;
-	    }
-	}
+                    str = buff.toString();
+                    buff = new StringBuffer();
+                    return str;
+                }
+            } else {
+                inputStream.read(b);
+                counter = 0;
+            }
+        }
     }
 }

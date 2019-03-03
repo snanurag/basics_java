@@ -12,19 +12,35 @@ import java.util.concurrent.TimeUnit;
 
 public class NIOvsIOThreadPool {
 
+    public static void main(String[] args) {
+//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
+//        for(int i=0; i < 20; i++){
+//            Task t = new NIOvsIOThreadPool.Task();
+//            threadPoolExecutor.execute(t);
+//        }
+//        threadPoolExecutor.shutdown();
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
+        for (int i = 0; i < 20; i++) {
+            TaskIO t = new NIOvsIOThreadPool.TaskIO();
+            threadPoolExecutor.execute(t);
+        }
+        threadPoolExecutor.shutdown();
+
+    }
+
     static class Task implements Runnable {
 
-        public void run()  {
+        public void run() {
 
             File f = new File("/Users/anuragshrinagar/Documents/workspace/Quora-Insincere-word-challenge/input/embeddings/glove.840B.300d/glove.840B.300d.txt");
 
             System.out.println("File channel Reading");
 
             FileInputStream fi = null;
-            try{
+            try {
                 fi = new FileInputStream(f);
-            }
-            catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
 
             }
 
@@ -33,8 +49,8 @@ public class NIOvsIOThreadPool {
             ByteBuffer bbf = ByteBuffer.allocate(100000);
 
             long time = System.currentTimeMillis();
-            System.out.println("start time "+time);
-            try{
+            System.out.println("start time " + time);
+            try {
                 while (fc.read(bbf) != -1) {
                     bbf.clear();
                 }
@@ -42,8 +58,7 @@ public class NIOvsIOThreadPool {
 
                 fc.close();
                 fi.close();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
 
             }
 
@@ -52,17 +67,16 @@ public class NIOvsIOThreadPool {
 
     static class TaskIO implements Runnable {
 
-        public void run()  {
+        public void run() {
 
             File f = new File("/Users/anuragshrinagar/Documents/workspace/Quora-Insincere-word-challenge/input/embeddings/glove.840B.300d/glove.840B.300d.txt");
 
             System.out.println("InputStream Reading");
 
             FileInputStream fi1 = null;
-            try{
+            try {
                 fi1 = new FileInputStream(f);
-            }
-            catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
 
             }
 
@@ -76,27 +90,9 @@ public class NIOvsIOThreadPool {
                 System.out.println(time - System.currentTimeMillis());
 
                 fi1.close();
-            }
-            catch (IOException e){
+            } catch (IOException e) {
 
             }
         }
-    }
-
-    public static void main(String[] args) {
-//        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
-//        for(int i=0; i < 20; i++){
-//            Task t = new NIOvsIOThreadPool.Task();
-//            threadPoolExecutor.execute(t);
-//        }
-//        threadPoolExecutor.shutdown();
-
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>());
-        for(int i=0; i < 20; i++){
-            TaskIO t = new NIOvsIOThreadPool.TaskIO();
-            threadPoolExecutor.execute(t);
-        }
-        threadPoolExecutor.shutdown();
-
     }
 }

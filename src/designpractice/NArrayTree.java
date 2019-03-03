@@ -4,7 +4,8 @@ public class NArrayTree implements INArrayTree {
 
     NodeValue v;
     INArrayTree[] arrayTrees;
-    public NArrayTree(INArrayTree[] array, NodeValue v){
+
+    public NArrayTree(INArrayTree[] array, NodeValue v) {
         arrayTrees = array;
         this.v = v;
     }

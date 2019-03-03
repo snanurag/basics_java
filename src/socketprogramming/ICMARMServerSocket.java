@@ -34,43 +34,42 @@ package socketprogramming;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ICMARMServerSocket {
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-		ServerSocket serverSocket = null;
-		Socket clientSocket = null;
+        ServerSocket serverSocket = null;
+        Socket clientSocket = null;
 
-		while (true) {
-			try {
-				serverSocket = new ServerSocket(4765);
+        while (true) {
+            try {
+                serverSocket = new ServerSocket(4765);
 
-			} catch (IOException e) {
-				System.err.println("Could not listen on port: 4444.");
-				System.exit(1);
-			}
-			try {
-				System.out.println("ARM before accept");
-				clientSocket = serverSocket.accept();
-				System.out.println("ARM after accept");
-			} catch (IOException e) {
-				System.err.println("Accept failed.");
-				System.exit(1);
-			}
+            } catch (IOException e) {
+                System.err.println("Could not listen on port: 4444.");
+                System.exit(1);
+            }
+            try {
+                System.out.println("ARM before accept");
+                clientSocket = serverSocket.accept();
+                System.out.println("ARM after accept");
+            } catch (IOException e) {
+                System.err.println("Accept failed.");
+                System.exit(1);
+            }
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					clientSocket.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    clientSocket.getInputStream()));
 
-			if (clientSocket.isConnected() ) {
-				System.out.println("ARM Server got input from client: " + in.readLine());
-			}
-			in.close();
-			clientSocket.close();
-			serverSocket.close();
+            if (clientSocket.isConnected()) {
+                System.out.println("ARM Server got input from client: " + in.readLine());
+            }
+            in.close();
+            clientSocket.close();
+            serverSocket.close();
 
-		}
-	}
+        }
+    }
 }

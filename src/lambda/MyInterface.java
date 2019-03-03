@@ -1,7 +1,7 @@
 package lambda;
 
 @FunctionalInterface
-interface MyInterface{
+interface MyInterface {
     void display();
 
 }

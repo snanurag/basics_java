@@ -25,14 +25,14 @@ public class TransferChannvelVsInputStream {
         FileOutputStream fos = new FileOutputStream(oFile);
         byte[] buf = new byte[64 * 1024];
         int len = 0;
-        while((len = is.read(buf)) != -1) {
-                fos.write(buf, 0, len);
+        while ((len = is.read(buf)) != -1) {
+            fos.write(buf, 0, len);
         }
         fos.flush();
         fos.close();
         is.close();
         long time2 = System.currentTimeMillis();
-        System.out.println("Time taken: "+(time2-time1)+" ms");
+        System.out.println("Time taken: " + (time2 - time1) + " ms");
     }
 
     private static void useFileChannel() throws Exception {
@@ -46,24 +46,24 @@ public class TransferChannvelVsInputStream {
         FileChannel f2 = fos.getChannel();
 
 
-      //  Direct transfer
-        
+        //  Direct transfer
+
 //        f.transferTo(0, f.size(), f2);
-        
-        
-         ByteBuffer buf = ByteBuffer.allocateDirect(64 * 1024);
+
+
+        ByteBuffer buf = ByteBuffer.allocateDirect(64 * 1024);
         long len = 0;
-        while((len = f.read(buf)) != -1) {
-                buf.flip();
-                f2.write(buf);
-                buf.clear();
+        while ((len = f.read(buf)) != -1) {
+            buf.flip();
+            f2.write(buf);
+            buf.clear();
         }
 
         f2.close();
         f.close();
         is.close();
         long time2 = System.currentTimeMillis();
-        System.out.println("Time taken: "+(time2-time1)+" ms");
+        System.out.println("Time taken: " + (time2 - time1) + " ms");
     }
 }
 
