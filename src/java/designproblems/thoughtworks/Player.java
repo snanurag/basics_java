@@ -68,7 +68,7 @@ public class Player {
      *
      * @param row rows in fleet
      * @param col columns in fleet
-     * @return Fleet of the playerß
+     * @return Fleet of the player
      */
     public Fleet createFleet(int row, int col) {
         fleet = new Fleet(row, col);

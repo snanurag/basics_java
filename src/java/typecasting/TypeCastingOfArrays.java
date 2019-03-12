@@ -8,7 +8,7 @@ public class TypeCastingOfArrays {
     static Number[] n = new Integer[3]; // This is covarience. It is present in
     // arrays only.
 
-    // Number[] m = new Object[5]; This gives error. Try uncomment and see error.ß
+//     Number[] m = new Object[5]; //This gives error. Try uncomment and see error.ß
 
     Object[] o = new String[9];
 

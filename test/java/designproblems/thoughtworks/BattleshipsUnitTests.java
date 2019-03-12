@@ -3,9 +3,7 @@ package designproblems.thoughtworks;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -29,6 +27,7 @@ public class BattleshipsUnitTests {
     private Player createPlayer(String name) {
         p = new Player(name);
         f = p.createFleet(5, 5);
+
 
         Ship ship = new Ship("Q", 1, 1);
         f.setShip(ship, 0, 0);
@@ -120,17 +119,17 @@ public class BattleshipsUnitTests {
 
     @Test
     public void testLunchBattle() throws IOException {
-        File output = new File("./src/output.txt");
-        FileReader fr = new FileReader(output);
-        char[] c = new char[100];
+
+        InputStream input =  new FileInputStream(String.valueOf(this.getClass().getResource("output.txt")));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         StringBuffer stringBuffer = new StringBuffer();
 
-        while (fr.read(c) != -1) {
-            stringBuffer.append(c);
-            c = new char[100];
+        String line;
+        while ((line = reader.readLine()) != null) {
+            stringBuffer.append(line);
         }
 
-        fr.close();
+        reader.close();
 
         Player p1 = p;
         Player p2 = createPlayer("Player-2");
