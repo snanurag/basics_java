@@ -1,9 +1,18 @@
-package algopractice.rakuten;
+package interviews.rakuten;
 
 
-class Solution {
+/**
+ * Mar 2019
+ *
+ * There is a series of trees for different height e.g. {3,4,5,4}.
+ * You have to cut exactly one tree and create a non-decreasing series.
+ * Return the total number of ways.
+ *
+ */
+
+public class NonDecreasingTreeSequence {
     public static void main(String[] args) {
-        Solution s = new Solution();
+        NonDecreasingTreeSequence s = new NonDecreasingTreeSequence();
         System.out.println(s.solution(new int[]{4, 5, 2, 5, 4}));
         System.out.println(s.solution(new int[]{4, 5, 2, 3, 4}));
         System.out.println(s.solution(new int[]{4, 5, 4, 3}));
@@ -13,15 +22,6 @@ class Solution {
         System.out.println(s.solution(new int[]{1, 2, 3, 4, 5}));
 
     }
-
-    /**
-     * There is a series of trees for different height e.g. {3,4,5,4}.
-     * You have to cut exactly one tree and create a non-decreasing series.
-     * Return the total number of ways.
-     *
-     * @param A
-     * @return
-     */
     public int solution(int[] A) {
         int tree_1 = 0;
         int tree_2 = 0;

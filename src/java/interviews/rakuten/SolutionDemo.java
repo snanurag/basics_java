@@ -1,4 +1,4 @@
-package algopractice.rakuten;
+package interviews.rakuten;
 /**
  * Demo Test
  * <p>

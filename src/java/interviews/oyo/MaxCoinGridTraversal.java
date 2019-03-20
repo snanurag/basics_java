@@ -1,4 +1,4 @@
-package algopractice;
+package interviews.oyo;
 /*
 There is a grid of m x n which has any random number of coins in any sell. Have to start from the any column of first row and traverse downward.
 Can traverse to only down, left-down or right-down cell. Find the complete traversal path till the last row that returns maximum sum of coins.
@@ -7,7 +7,7 @@ Can traverse to only down, left-down or right-down cell. Find the complete trave
 import java.util.ArrayList;
 import java.util.List;
 
-public class OYOGridTraversal {
+public class MaxCoinGridTraversal {
 
     public static void main(String[] args) {
         int[][] grid = new int[10][10];
