@@ -4,7 +4,7 @@ package algos;
  * This code works only for the unique number of entries in the given sample
  * input. For duplicate entries, it could be modified.
  */
-public class Combinations {
+public class Permutations {
 
     private static int[] a;
 
