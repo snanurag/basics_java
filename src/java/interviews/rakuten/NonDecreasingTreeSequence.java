@@ -6,6 +6,7 @@ package interviews.rakuten;
  *
  * There is a series of trees for different height e.g. {3,4,5,4}.
  * You have to cut exactly one tree and create a non-decreasing series.
+ *
  * Return the total number of ways.
  *
  */
@@ -13,13 +14,13 @@ package interviews.rakuten;
 public class NonDecreasingTreeSequence {
     public static void main(String[] args) {
         NonDecreasingTreeSequence s = new NonDecreasingTreeSequence();
-        System.out.println(s.solution(new int[]{4, 5, 2, 5, 4}));
-        System.out.println(s.solution(new int[]{4, 5, 2, 3, 4}));
-        System.out.println(s.solution(new int[]{4, 5, 4, 3}));
-        System.out.println(s.solution(new int[]{3, 4, 5, 4, 4, 4}));
-        System.out.println(s.solution(new int[]{4, 6, 5, 5, 6}));
-        System.out.println(s.solution(new int[]{3, 4, 5, 4}));
-        System.out.println(s.solution(new int[]{1, 2, 3, 4, 5}));
+        System.out.println(s.solution(new int[]{4, 5, 2, 5, 4}) == 0);
+        System.out.println(s.solution(new int[]{4, 5, 2, 3, 4}) == 0);
+        System.out.println(s.solution(new int[]{4, 5, 4, 3}) == 0);
+        System.out.println(s.solution(new int[]{3, 4, 5, 4, 4, 4}) == 1);
+        System.out.println(s.solution(new int[]{4, 6, 5, 5, 6}) == 1);
+        System.out.println(s.solution(new int[]{3, 4, 5, 4}) == 2);
+        System.out.println(s.solution(new int[]{1, 2, 3, 4, 5}) == 5);
 
     }
     public int solution(int[] A) {

@@ -1,10 +1,8 @@
 package interviews.amazon;
 
-// IMPORT LIBRARY PACKAGES NEEDED BY YOUR PROGRAM
-// SOME CLASSES WITHIN A PACKAGE MAY BE RESTRICTED
-// DEFINE ANY CLASS AND METHOD NEEDED
-
 import java.util.*;
+
+// Apr 2019
 
 /**
  * There are many cities in the network  and all should be connected at minimum possible cost. Following details are given

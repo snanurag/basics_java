@@ -1,6 +1,8 @@
 package interviews.amazon;
 
 /**
+ * Apr 2019
+ *
  * There is a truck space and a number of packages. Exactly 2 packages need to be put in truck.
  * After setting the packages, 30 space units should be left in truck.
  * If there are multiple sets of packages then always choose the set which contains biggest package.
