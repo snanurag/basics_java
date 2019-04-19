@@ -1,69 +1,89 @@
 package interviews.google;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
- * x 0 x 0 x 0
- * 0 0 0 0 0 0
- * 0 0 x 0 0 0
- * 0 0 0 y 0 0
+ * x 0 x 0 x
+ * 0 x 0 x 0
+ * x 0 x 0 x
+ * 0 x 0 x 0
+ * x 0 x 0 y
+ * <p>
+ * x 0 x
+ * 0 x 0
+ * x 0 y
  */
 public class MinDistance {
 
     public void traverse(String[][] grid) {
         int[] pair = new int[4];
         int dist = Integer.MAX_VALUE;
-        boolean[][] markerGrid = new boolean[grid.length][grid[0].length];
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] != null) {
-                    int[] arr = startSweep(i, j, grid, markerGrid);
-                    int tmp = Math.abs(i - arr[0]) + Math.abs(j - arr[1]);
-                    if (tmp < dist) {
-                        dist = tmp;
-                        pair = new int[]{i, j, arr[0], arr[1]};
+
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                if (grid[row][col] == "x") {
+                    int[] y = diamondTraversal(row, col, grid, dist);
+                    if (y != null) {
+                        dist = Math.abs(row - y[0]) + Math.abs(col - y[1]);
+                        pair = new int[]{row, col, y[0], y[1]};
                     }
                 }
             }
         }
 
         System.out.print("pair -> ");
-        Arrays.asList(pair).forEach(n -> System.out.print(n + " "));
+
+        for (int i : pair) {
+            System.out.print(i+" ");
+        }
         System.out.println("Distance -> " + dist);
     }
+
 
     /**
      * Return only when different value found than i,j. Otherwise recursive.
      *
-     * @param i
-     * @param j
      * @param grid
-     * @param markerGrid
      * @return
      */
-    private int[] startSweep(int i, int j, String[][] grid, boolean[][] markerGrid) {
-        String val = grid[i][j];
-        int dist = 0;
-        int x = 0;
-        while (true) {
-            dist++;
-            x = 0;
-            while (x != dist + 1) {
-                int row = i + x;
-                int col = j + dist - x;
-                if (row < grid.length && col < grid[0].length) {
-                    if (!markerGrid[row][col]) {
-                        markerGrid[row][col] = true;
-                        String newval = grid[row][col];
-                        if (newval != null) {
-                            if (newval != val) return new int[]{row,col};
-                            else return startSweep(row,col, grid, markerGrid);
-                        }
-                        if(row == grid.length -1 && col == grid[0].length -1) return null;
-                    }
-                }
-                x++;
+    private int[] diamondTraversal(int row, int col, String[][] grid, int dist) {
+        int l = 1;
+        while (l < dist) {
+            for (int i = 0; i <= l; i++) {
+                int[] y = checkAllNodesAt(row, col, i,  (l - i), grid);
+                if (y != null) return y;
             }
+            l++;
         }
+        return null;
+    }
+
+    private int[] checkAllNodesAt(int row, int col, int i, int j, String[][] grid) {
+
+        if (row+i < grid.length && col+j < grid[0].length && grid[row+i][col+j] == "y") return new int[]{row+i, col+j};
+        else if (row-i > -1 && col+j < grid[0].length && grid[row-i][col+j] == "y") return new int[]{row -i, col+j};
+        else if (row+i < grid.length && col-j > -1 && grid[row+i][col-j] == "y") return new int[]{row +i, col-j};
+        else if (row-i > -1 && col-j > -1 && grid[row-i][col-j] == "y") return new int[]{row -i, col-j};
+        else return null;
+    }
+
+    /**
+     *  x 0 x
+     *  0 x 0
+     *  x 0 y
+     * @param args
+     */
+    public static void main(String[] args) {
+        String[][] strings = new String[3][3];
+        strings[0][0] = "x";
+        strings[0][2] = "x";
+        strings[1][1] = "x";
+        strings[2][0] = "x";
+        strings[2][2] = "y";
+
+        new MinDistance().traverse(strings);
+
     }
 }

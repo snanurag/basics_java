@@ -1,4 +1,4 @@
-package interviews.google;
+package interviewbit.google;
 
 // https://www.interviewbit.com/problems/distinct-subsequences/
 public class DistinctSubstrings {

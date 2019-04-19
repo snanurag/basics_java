@@ -1,4 +1,4 @@
-package interviews.google;
+package interviewbit.google;
 
 /**
  * Try to do this one using stack and keeping count. That would have been easier.

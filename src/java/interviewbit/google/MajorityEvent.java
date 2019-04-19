@@ -1,4 +1,4 @@
-package interviews.google;
+package interviewbit.google;
 
 import java.util.Arrays;
 import java.util.List;

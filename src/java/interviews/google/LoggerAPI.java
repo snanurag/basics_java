@@ -22,20 +22,21 @@ public class LoggerAPI {
 
     void endEvent(int rId, Long ts) {
         synchronized (queue){
-            if (startEventExists()) {
+            if (startEventExists(rId)) {
                 writeToLogger(ts);
             } else {
                 storeToMap(rId, ts);
                 return;
             }
-            while (startEventExists() && endEventExists()) {
+            while (nextStartAndEndEventPairMatch()) {
                 writeToLogger();
             }
         }
     }
 
-    boolean startEventExists() {
-        return queue.peek() != null;
+    boolean startEventExists(int rId) {
+        StartEvent e = queue.peek();
+        return e!=null && e.reqId == rId;
     }
 
     void writeToLogger(Long ts) {
@@ -49,17 +50,30 @@ public class LoggerAPI {
         System.out.println(s.reqId + " " + s.ts + " " + ts);
     }
 
-    boolean endEventExists() {
+    boolean nextStartAndEndEventPairMatch() {
         StartEvent s = queue.peek();
-        Long ts = map.get(s.reqId);
-        if (ts == 0) return false;
-        return true;
+        if(s!= null){
+            Long ts = map.get(s.reqId);
+            if (ts != null) return true;
+        }
+        return false;
     }
 
     void storeToMap(int reqId, long ts){
         map.put(reqId, ts);
     }
 
+    public static void main(String[] args) {
+
+        //Some basic tests on Java Apis.
+        StartEvent s = new LoggerAPI().queue.peek();
+        System.out.println(s);  //null
+
+        Long l = new LoggerAPI().map.get("a");
+        long a = l; //NullPointerException
+        System.out.println(l);
+        System.out.println(a);
+    }
 }
 
 class StartEvent implements Comparator {
