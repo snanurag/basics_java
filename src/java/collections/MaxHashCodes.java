@@ -6,8 +6,8 @@ import java.util.*;
 public class MaxHashCodes {
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
-//        hashmapRunningCapicityVSNewObjects();
-        checkDifferentHashcodesProduced();
+        hashmapRunningCapicityVSNewObjects();
+//        checkDifferentHashcodesProduced();
     }
 
 
@@ -34,7 +34,7 @@ public class MaxHashCodes {
     }
 
     /**
-     * This function shows that new objects has the hashcodes which fills the buckets rather than going into same bucket.
+     * This function shows that new objects has the hashcodes which fills the new buckets rather than going into same bucket.
      * In output, hashmap buckets will keep increasing when total objects reaches the load factor point (0.75).
      *
      * @throws NoSuchFieldException
