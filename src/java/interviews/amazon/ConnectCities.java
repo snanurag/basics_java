@@ -39,27 +39,26 @@ public class ConnectCities {
                     inNetwork = true;
                 }
             }
-            if(inNetwork){
+            if (inNetwork) {
                 Set<Integer> finalSet = null;
-                if(commonNetworks.size() > 1){
+                if (commonNetworks.size() > 1) {
                     finalSet = new HashSet<>();
                     commonNetworks.forEach(finalSet::addAll);
                     totalIsolatedNetworks.add(finalSet);
                     totalIsolatedNetworks.removeAll(commonNetworks);
-                }
-                else{
+                } else {
                     finalSet = commonNetworks.get(0);
                 }
                 finalSet.add(l.get(0));
                 finalSet.add(l.get(1));
-            }
-            else{
+            } else {
                 Set<Integer> tmpH = new HashSet<>();
                 tmpH.add(l.get(0));
                 tmpH.add(l.get(1));
                 totalIsolatedNetworks.add(tmpH);
             }
         }
+
 
         totalIsolatedCities.stream().forEach(n -> {
             Set<Integer> t = new HashSet<>();
@@ -72,40 +71,39 @@ public class ConnectCities {
         Set<Integer> s1 = totalIsolatedNetworks.get(0);
         while (totalIsolatedNetworks.size() > 1) {
 
-            boolean constructionPossible = false;
-            int tmpCost = Integer.MAX_VALUE;
+            int tmpCost = -1;
             Set<Integer> tmpSet = null;
             for (Set<Integer> s2 : totalIsolatedNetworks) {
                 if (s1 == s2) continue;
                 for (Integer a : s1) {
                     for (Integer b : s2) {
                         for (List<Integer> costList : costNewRoadsConstruct) {
-                            if ((costList.get(0) == a && costList.get(1) == b) || (costList.get(0) == b && costList.get(1) == a)) {
-                                constructionPossible = true;
-                                if (costList.get(2) < tmpCost) {
-                                    tmpCost = costList.get(2);
-                                    tmpSet = s2;
-                                }
+                            if (constructionPossible(costList, a, b) && (tmpCost == -1 || costList.get(2) < tmpCost)) {
+                                tmpCost = costList.get(2);
+                                tmpSet = s2;
+
                             }
                         }
                     }
                 }
 
             }
-            if (constructionPossible) {
+            if (tmpCost != -1) {
                 tmpNewRoads++;
                 finalCost += tmpCost;
                 s1.addAll(tmpSet);
                 totalIsolatedNetworks.remove(tmpSet);
             } else return -1;
-            constructionPossible = false;
-            tmpCost = Integer.MAX_VALUE;
         }
 
         if (tmpNewRoads > numNewRoadsConstruct) return -1;
         if (finalCost == 0) return -1;
         return finalCost;
 
+    }
+
+    private boolean constructionPossible(List<Integer> costList, int firstCity, int secondCity) {
+        return (costList.get(0) == firstCity && costList.get(1) == secondCity) || (costList.get(0) == secondCity && costList.get(1) == firstCity);
     }
 
     public static void main(String[] args) {

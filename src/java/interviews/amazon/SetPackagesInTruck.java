@@ -25,7 +25,8 @@ public class SetPackagesInTruck {
                 finalList.add(frontCounter);
                 finalList.add(lastCounter);
                 return finalList;
-            } else if (packagesSpace.get(frontCounter) + packagesSpace.get(lastCounter) > requiredSize) lastCounter--;
+            }
+            else if (packagesSpace.get(frontCounter) + packagesSpace.get(lastCounter) > requiredSize) lastCounter--;
             else frontCounter++;
         }
         return finalList;

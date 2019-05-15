@@ -18,6 +18,8 @@ public class MethodReference {
         //This proves that a constructor also works as a lambda function and can be assigned to any functional interface function.
 //        MyInterface3 ref3 = Hello::new;
 
+        //This proves that interface doesn't need to be a functional interface.
+        NonFunctionalInterface nref = Hello::new;
     }
 
     public void myMethod() {
