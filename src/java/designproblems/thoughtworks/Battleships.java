@@ -56,8 +56,8 @@ public class Battleships {
      * @return
      */
     public String launchBattle(int rows, int cols, List<String[]> battleShips, String[] attacksOfP1, String[] attacksOfP2) {
-        Player p1 = new Player("Player-1");
-        Player p2 = new Player("Player-2");
+        Player p1 = new Player("Piece-1");
+        Player p2 = new Player("Piece-2");
         p1.setOpposition(p2);
         p2.setOpposition(p1);
 

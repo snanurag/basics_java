@@ -53,3 +53,5 @@ Temporary Items
 /gradle/
 /.gradle/
 java_learning.iml
+
+/src/java/Test*
