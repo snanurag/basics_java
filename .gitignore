@@ -55,3 +55,6 @@ Temporary Items
 java_learning.iml
 
 /src/java/Test*
+
+grpc/build
+grpc/out

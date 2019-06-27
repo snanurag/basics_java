@@ -1,4 +1,4 @@
-package jvm.metaspace.outofmemory;
+package jvm.memorymanagement.metaspace.outofmemory;
 
 import java.util.Map;
 import java.util.HashMap;

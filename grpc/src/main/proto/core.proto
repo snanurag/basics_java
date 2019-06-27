@@ -1,0 +1,165 @@
+syntax = "proto3";
+
+package core;
+
+import "google/api/annotations.proto";
+
+service Trigger {
+  rpc CreateRun(CreateRunRequest) returns (CreateRunResponse) {
+    option (google.api.http) = {
+      post: "/api/v3/trigger/runs"
+      body: "*"
+    };
+  }
+
+  rpc ApproveRun(ApproveRunRequest) returns (ApproveRunResponse) {
+    option (google.api.http) = {
+      post: "/api/v3/trigger/runs/approve"
+      body: "*"
+    };
+  }
+}
+
+message ApproveRunRequest {
+  string runId = 1;
+}
+
+message ApproveRunResponse {
+}
+
+message CreateRunRequest {
+  string pipelineId = 1;
+  string sourceRunId = 2;
+  string branch = 3;
+  string commitHash = 4;
+  string message = 5;
+  repeated EnvVar envVars = 6;
+  repeated Commit commits = 7;
+  PullRequest pullRequest = 8;
+  UnifiedUser user = 9;
+  string workflowItemId = 10;
+  string tag = 11;
+  string pipelineName = 12;
+}
+
+message CreateRunResponse {
+  string id = 1;
+  string url = 2;
+  string branch = 3;
+  string commitHash = 4;
+  string createdAt = 5;
+  repeated EnvVar envVars = 6;
+  string message = 7;
+  repeated Commit commits = 8;
+  int32 progress = 9;
+  string result = 10;
+  string status = 11;
+  UnifiedUser user = 12;
+  Pipeline pipeline = 13;
+  CreateRunResponse sourceRun = 14;
+  Workflow workflow = 15;
+  string tag = 16;
+}
+
+message EnvVar {
+  string key = 1;
+  string value = 2;
+}
+
+message Commit {
+  string commitHash = 1;
+  string message = 2;
+  string by = 3;
+}
+
+message PullRequest {
+  string title = 1;
+  string author = 2;
+  int64 number = 3;
+  string htmlUrl = 4;
+  string baseRef = 5;
+  string baseSha = 6;
+  string headRef = 7;
+  string headSha = 8;
+  string repositoryName = 9;
+  string repositoryFullname = 10;
+  bool fromFork = 11;
+}
+
+message UnifiedUser {
+  message Meta {
+    string username = 1;
+    string type = 2;
+  }
+  string type = 1;
+  string name = 2;
+  string userId = 3;
+  Meta meta = 4;
+  Avatar avatar = 5;
+}
+
+message Avatar {
+  oneof avatar_oneof {
+    string gravatar = 1;
+    string url = 2;
+  }
+}
+
+message Pipeline {
+  string id = 1;
+  string url = 2;
+  string createdAt = 3;
+  string name = 4;
+  string permissions = 5;
+  string pipelineName = 6;
+  bool setScmProviderStatus = 7;
+  string type = 8;
+}
+
+message Workflow {
+  string id = 1;
+  string url = 2;
+  string trigger = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  WorkflowData data = 6;
+  UnifiedUser user = 7;
+  repeated WorkflowItem items = 8;
+}
+
+message WorkflowData {
+  string branch = 1;
+  string commitHash = 2;
+  string message = 3;
+  WorkflowDataScm scm = 4;
+  string tag = 5;
+}
+
+message WorkflowDataScm {
+  string type = 1;
+  string owner = 2;
+  string domain = 3;
+  string repository = 4;
+  string scmProvider = 5;
+  string devcsRoot = 6;
+  string devcsProjectId = 7;
+}
+
+message WorkflowItem {
+  string id = 1;
+  string type = 2;
+  string parentItem = 3;
+  repeated string parentItems = 4;
+  string status = 5;
+  string result = 6;
+  WorkflowItemData data = 7;
+  string updatedAt = 8;
+  string finishedAt = 9;
+}
+
+message WorkflowItemData {
+  string targetName = 1;
+  string pipelineId = 2;
+  string runId = 3;
+  bool restricted = 4;
+}

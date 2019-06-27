@@ -1,4 +1,4 @@
-package jvm.metaspace.outofmemory;
+package jvm.memorymanagement.metaspace.outofmemory;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
