@@ -15,6 +15,10 @@ repositories {
         mavenCentral()
 }
 
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
+
+
 sourceSets {
     main.java.srcDirs = ['src/java']
     main.resources.srcDirs = ['src/resources']

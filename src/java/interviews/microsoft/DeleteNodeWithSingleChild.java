@@ -1,15 +1,15 @@
 package interviews.microsoft;
 
 /**
- * 1
- * 2     3
- * 4    5    7
- * 6    8
+ *       1
+ *    2     3
+ * 4    5     7
+ *    6         8
  * <p>
  * should convert to
  * <p>
- * 1
- * 2    8
+ *      1
+ *   2     8
  * 4  6
  */
 
