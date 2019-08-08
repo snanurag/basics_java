@@ -6,4 +6,10 @@ public class MainClass {
     public void setIt() {
 
     }
+
+    @SQLString
+    @SimulatingNull(description = "")
+    public void setIt2() {
+
+    }
 }

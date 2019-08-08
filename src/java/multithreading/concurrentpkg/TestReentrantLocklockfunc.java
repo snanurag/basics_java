@@ -16,6 +16,7 @@ public class TestReentrantLocklockfunc {
         Thread t2 = new Thread2();
         t1.start();
         t2.start();
+
     }
 
     static class Thread1 extends Thread {
@@ -29,7 +30,7 @@ public class TestReentrantLocklockfunc {
                 e.printStackTrace();
             }
 
-            System.out.println("Thread1 after aquiring lock");
+            System.out.println("Thread1 after aquiring lock and exit");
 
         }
     }
@@ -38,7 +39,7 @@ public class TestReentrantLocklockfunc {
 
         public void run() {
             lock.lock();
-            System.out.println("Thread2 after aquiring lock");
+            System.out.println("Thread2 after aquiring lock and exit");
 
         }
     }

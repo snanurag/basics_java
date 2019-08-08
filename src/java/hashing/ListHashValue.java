@@ -19,6 +19,11 @@ public class ListHashValue {
      * @param args
      */
     public static void main(String[] args) {
+        sameOrderList();
+        diffOrderList();
+    }
+
+    private static void sameOrderList(){
         HashSet<List<Integer>> set = new HashSet<>();
         List<Integer> list = new ArrayList<>();
         list.add(1);
@@ -29,6 +34,27 @@ public class ListHashValue {
         List<Integer> list2 = new ArrayList<>();
         list2.add(1);
         list2.add(0);
+
+        System.out.println(set.contains(list2));
+
+        System.out.println(list.hashCode());
+        System.out.println(list2.hashCode());
+
+        System.out.println(list.equals(list2));
+
+    }
+
+    private static void diffOrderList(){
+        HashSet<List<Integer>> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(0);
+
+        set.add(list);
+
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(0);
+        list2.add(1);
 
         System.out.println(set.contains(list2));
 

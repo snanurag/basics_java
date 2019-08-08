@@ -20,7 +20,7 @@ public class MainClass {
         System.out.println(cTest.getI());
         CloneTest cTest2 = (CloneTest) cTest.clone();
         System.out.println(cTest2.getI());
-        System.out.println("Clone is not a different object: "
+        System.out.println("Clone is same object: "
                 + (cTest == cTest2));
         cTest2.setI(50);
         System.out.println(cTest.getI());

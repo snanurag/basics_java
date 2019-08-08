@@ -19,49 +19,30 @@ public class TestReentrantReadWriteLock {
     static Lock wLock = readWriteLock.writeLock();
 
     public static void main(String[] args) {
-        new ReaderThread1().start();
-        new ReaderThread2().start();
-        new WriterThread1().start();
-        new ReaderThread2().start();
-        new ReaderThread3().start();
+        new ReaderThread().start();
+        new WriterThread().start();
+        new ReaderThread().start();
     }
 
-    static class ReaderThread1 extends Thread {
+
+    static class ReaderThread extends Thread {
         @Override
         public void run() {
-            /*
-             * TODO Try to run it with commenting and not commenting the sleep.
-             * This way, race condition can be observed with Writer1 Thread.
-             */
+            System.out.println("Reader thread trying to acquire lock");
             rLock.lock();
-            // try {
-            // Thread.sleep(5000);
-            // } catch (InterruptedException e) {
-            // // TODO Auto-generated catch block
-            // e.printStackTrace();
-            // }
-            System.out.println("Reader thread 1 done");
-            rLock.unlock();
-
-        }
-    }
-
-    static class ReaderThread2 extends Thread {
-        @Override
-        public void run() {
-            rLock.lock();
+            System.out.println("Reader thread acquired lock");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            System.out.println("Reader thread 2 done");
             rLock.unlock();
+            System.out.println("Reader thread released lock");
         }
     }
 
-    static class WriterThread1 extends Thread {
+    static class WriterThread extends Thread {
         @Override
         public void run() {
             try {
@@ -77,30 +58,14 @@ public class TestReentrantReadWriteLock {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            System.out.println("Writer thread trying to acquire lock");
             wLock.lock();
-            System.out.println("Writer thread 1 done");
+            System.out.println("Writer thread acquired lock");
             wLock.unlock();
+            System.out.println("Writer thread released lock");
+
         }
     }
 
-    static class ReaderThread3 extends Thread {
-        @Override
-        public void run() {
-            /**
-             * This 2000 value of sleep ensures that the Reader Thread 3 takes
-             * lock after Writer has acquired write lock.
-             */
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            rLock.lock();
-
-            System.out.println("Reader thread 3 done");
-            rLock.unlock();
-        }
-    }
 
 }

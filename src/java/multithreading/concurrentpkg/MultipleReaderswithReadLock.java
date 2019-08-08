@@ -11,54 +11,30 @@ public class MultipleReaderswithReadLock {
     static Lock rLock = readWriteLock.readLock();
 
     public static void main(String[] args) {
-        new ReaderThread1().start();
-        new ReaderThread2().start();
+        new ReaderThread().start();
+        new ReaderThread().start();
     }
 
 
-    static class ReaderThread1 extends Thread {
+    static class ReaderThread extends Thread {
         @Override
         public void run() {
             rLock.lock();
-            System.out.println("Before Sleep 1 ReaderThread1");
+            System.out.println("Before Sleep 1 "+Thread.currentThread().getName());
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            System.out.println("After Sleep 1 ReaderThread1");
+            System.out.println("After Sleep 1 "+Thread.currentThread().getName());
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            System.out.println("After Sleep 2 ReaderThread1");
-            rLock.unlock();
-        }
-
-    }
-
-    static class ReaderThread2 extends Thread {
-        @Override
-        public void run() {
-            rLock.lock();
-            System.out.println("Before Sleep 1 ReaderThread2");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            System.out.println("After Sleep 1 ReaderThread2");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            System.out.println("After Sleep 2 ReaderThread2");
+            System.out.println("After Sleep 2 "+Thread.currentThread().getName());
             rLock.unlock();
         }
 
