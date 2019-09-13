@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 //Parallelstream runs threads in parallel.
-public class SteamsParallelizationTest {
+public class ParallelStreams {
     public static void main(String[] args) throws IOException {
         Set<String> threadNames = new HashSet<>();
         File f = new File("test.txt");
@@ -20,12 +20,12 @@ public class SteamsParallelizationTest {
 //        l.parallelStream().forEach(System.out::println); //Printing parallelly.
         l.stream().parallel().forEach(System.out::println); //Printing parallely
 
-//        l.stream().forEach(n ->
-//        threadNames.add(Thread.currentThread().getName())
-//        );
-        l.parallelStream().forEach(n ->
-                threadNames.add(Thread.currentThread().getName())
+        l.stream().forEach(n ->
+        threadNames.add(Thread.currentThread().getName())
         );
+//        l.parallelStream().forEach(n ->
+//                threadNames.add(Thread.currentThread().getName())
+//        );
         threadNames.forEach(System.out::println);
         System.out.println("all writing done.");
 
