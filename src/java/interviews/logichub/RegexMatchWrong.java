@@ -1,4 +1,4 @@
-
+package interviews.logichub;
 /*
  * To execute Java, please define "static void main" on a class
  * named Solution.
