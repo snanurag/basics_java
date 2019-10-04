@@ -2,6 +2,12 @@ package multithreading.concurrentpkg;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Benefit 1 : lockInterruptibly doesn't wait for sleep or wait to occur to interrupt the thread.
+ * Benefit 2 : Don't need to write lock snippet in one block. Can move the lock object anywhere in call hierarchy.
+ * Benefit 3 : Got a shared read lock and exclusive write lock objects.
+ *
+ */
 public class LockInterrupt {
     static    ReentrantLock lock = new ReentrantLock();
     public static void tryInterruptibly() {
