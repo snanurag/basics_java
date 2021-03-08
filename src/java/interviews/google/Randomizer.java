@@ -3,6 +3,9 @@ package interviews.google;
 /**
  * Generate randomizer with the colored balls in a basket
  *
+ * Problem of weighted randomness
+ * Problem statement : I need to return a random color. But red should be picked 4 times as frequent as blue and 2 times as frequent as green.
+ *
  * There could be millions of colors of balls with millions of balls of each color.
  */
 public class Randomizer {
@@ -40,7 +43,7 @@ public class Randomizer {
 
     public static void main(String[] args) {
 //        while(true) System.out.println(Math.random());
-        System.out.println(new Randomizer().randomNumber(new String[]{"r","g","b"}, new int[]{3,4,5}));
+        System.out.println(new Randomizer().randomNumber(new String[]{"r","g","b"}, new int[]{4,2,1}));
     }
 }
 
