@@ -1,36 +1,31 @@
 package interviews.oracle;
 
-public class MergeKSortedArray2 {
-    public static int[] sort(int[][] k) {
+import java.util.*;
 
-        return sort(k, k.length);
+public class MergeKSortedArrayUsingMergeSortAndList {
+    public static int[] sort(int[][] k) {
+        return sort(Arrays.asList(k));
     }
 
-    public static int[] sort(int[][] k, int len) {
-        if (len == 1)
-            return k[0];
-        int f = len;
-        if (len % 2 == 1) {
+    public static int[] sort(List<int[]> k) {
+        if (k.size() == 1)
+            return k.get(0);
+        int f = k.size();
+        if (f % 2 == 1) {
             f -= 1;
         }
         int counter = 0;
-        int[][] arr = new int[len][];
-        int arrCounter = 0;
+        List<int[]> newList = new ArrayList<>();
         while (counter < f) {
-            if (k[counter] != null && k[counter + 1] != null) {
-                arr[arrCounter] = sort(k[counter++], k[counter++]);
-                arrCounter++;
+            if (k.get(counter) != null && k.get(counter + 1) != null) {
+                newList.add(sort(k.get(counter++), k.get(counter++)));
             }
         }
 
-        int finalLen = 0;
-        if (len % 2 == 1) {
-            arr[arrCounter] = k[f];
-            finalLen = f / 2 + 1;
-        } else {
-            finalLen = f / 2;
+        if (k.size() % 2 == 1) {
+            newList.add(k.get(k.size() - 1));
         }
-        return sort(arr, finalLen);
+        return sort(newList);
     }
 
     public static int[] sort(int[] a, int[] b) {
@@ -65,11 +60,11 @@ public class MergeKSortedArray2 {
     public static void main(String[] args) {
         int[][] k = new int[3][];
 
-        k[0] = new int[]{4,7,14};
-        k[1] = new int[]{3,8, 15};
-        k[2] = new int[]{5, 6, 7,8,13,};
+        k[0] = new int[]{4, 7, 14};
+        k[1] = new int[]{3, 8, 15};
+        k[2] = new int[]{5, 6, 7, 8, 13,};
         int[] f = sort(k);
-        for(int i:f){
+        for (int i : f) {
             System.out.print(i + " ");
         }
     }
